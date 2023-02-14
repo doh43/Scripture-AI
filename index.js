@@ -2,8 +2,6 @@
 const { Client, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
 
-dotenv.config();
-
 // Create a new client instance
 const client = new Client({ 
     intents: [
@@ -20,7 +18,7 @@ client.once(Events.ClientReady, c => {
 	console.log(`Ready! Logged in as ${c.user.tag}`);
 });
 
-client.on("messageCreate", function (message) {
+client.on("messageCreate", (message) => {
     if (message.author.bot) return;
     return message.reply(`${message.content}`);
 });
